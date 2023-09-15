@@ -36,11 +36,13 @@ The mean temperature is `r round(mean(early_january_weather$temp),digits=1)` $^\
   
 ## Scatterplot: `temp` vs `time_hour`
 
-Looking at the plot below, we see that !DESCRIBE PLOT
+Looking at the plot below, we see that the temperature was fluctuating between hours, but showed a general positive trend through time, indicating that it was getting warmer. The humidity was very high between January 11 to January 14, suggesting a rainy period. After that, the temperature peaked at almost 60 degrees before taking a dip down to approximately 37 degrees.
 ```{r scatterplot}
-ggplot(early_january_weather, aes(x = time_hour, y = temp)) + geom_point(aes(colour = humid))
+weather_plot <- ggplot(early_january_weather, aes(x = time_hour, y = temp)) + 
+  geom_point(aes(colour = humid))
+weather_plot
+ggsave("weather_plot.png")
 ```
-
 
 # Problem 2
 
@@ -56,7 +58,6 @@ prob2 <- tibble(
   factor_vec = factor(c('yes','no','maybe','no','no','maybe','yes','no','yes','yes'))
 )
 ```
-
 
 ## Calculating means
 
