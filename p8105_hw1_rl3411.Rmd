@@ -31,7 +31,14 @@ The mean temperature is `r round(mean(early_january_weather$temp),digits=1)` $^\
 | `visib`                                 | Visibility in miles                                        |
 | `time_hour`                             | Date and hour of the recording                             |
   
-  
+## Scatterplot: `temp` vs `time_hour`
+
+Looking at the plot below, we see that !DESCRIBE PLOT
+```{r scatterplot}
+library(ggplot2)
+ggplot(early_january_weather, aes(x = time_hour, y = temp)) + geom_point(aes(colour = humid))
+```
+
 
 
 
