@@ -51,7 +51,7 @@ Let us first create a dataframe.
 ```{r dataframe}
 prob2 <- tibble(
   rand_samp = rnorm(10, 0, 1),
-  logical_check = rand_samp > 0,
+  logical_vec = rand_samp > 0,
   char_vec = c('are','we','supposed','to','give','an','example','i','dont','know'),
   factor_vec = factor(c('yes','no','maybe','no','no','maybe','yes','no','yes','yes'))
 )
@@ -64,11 +64,19 @@ Now, we shall try to take the mean of each variable:
 mean(pull(prob2,rand_samp))
 ```
 
-2. This also works for `logical_check`.
+2. This also works for `logical_vec`.
 ```{r mean2}
-mean(pull(prob2,logical_check))
+mean(pull(prob2,logical_vec))
 ```
 
+3. However, taking the mean of the character variable `char_vec` returns a warning. This fails because we can only take means of numeric or logical variables, which `char_vec` is a character variable.
+```{r mean3}
+mean(pull(prob2,char_vec))
+```
 
+4. Lastly, taking the mean of `factor_vec` gives the same warning as the previous character variable, as this is a factor variable.
+```{r mean4}
+mean(pull(prob2,factor_vec))
+```
 
 
