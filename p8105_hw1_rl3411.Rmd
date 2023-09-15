@@ -85,7 +85,7 @@ mean(pull(prob2, factor_vec))
 
 ## Conversion to numeric variables
 
-```{r convert, message = FALSE}
+```{r convert, results = "hide", warning = FALSE}
 as.numeric(pull(prob2, logical_vec))
 as.numeric(pull(prob2, factor_vec))
 as.numeric(pull(prob2, char_vec))
