@@ -57,26 +57,43 @@ prob2 <- tibble(
 )
 ```
 
+
+## Calculating means
+
 Now, we shall try to take the mean of each variable:
 
 1. We see that this works for `rand_samp`.
 ```{r mean1}
-mean(pull(prob2,rand_samp))
+mean(pull(prob2, rand_samp))
 ```
 
 2. This also works for `logical_vec`.
 ```{r mean2}
-mean(pull(prob2,logical_vec))
+mean(pull(prob2, logical_vec))
 ```
 
 3. However, taking the mean of the character variable `char_vec` returns a warning. This fails because we can only take means of numeric or logical variables, which `char_vec` is a character variable.
 ```{r mean3}
-mean(pull(prob2,char_vec))
+mean(pull(prob2, char_vec))
 ```
 
 4. Lastly, taking the mean of `factor_vec` gives the same warning as the previous character variable, as this is a factor variable.
 ```{r mean4}
-mean(pull(prob2,factor_vec))
+mean(pull(prob2, factor_vec))
 ```
+
+## Conversion to numeric variables
+
+```{r convert, message = FALSE}
+as.numeric(pull(prob2, logical_vec))
+as.numeric(pull(prob2, char_vec))
+as.numeric(pull(prob2, factor_vec))
+```
+
+By applying `as.numeric` to those 3 variables, this converts `logical_vec` to a series of binary numbers 0 or 1. 1 corresponds to true and 0 corresponds to false. For the factor vector, it changes the levels into numbers 1, 2 and 3. R automatically arranges the levels alphabetically, therefore "**m**aybe" takes value 1, "**n**o" takes value 2, and "**y**es" takes value 3. Lastly, we cannot convert the character vector into numeric therefore it returns a series a NAs. We can first make this into a factor then convert it to a numeric vector by executing `as.numeric(factor(pull(prob2, char_vec)))`, but this just assigns a number to the alphabetical arrangement of the elements so taking the mean would not necessarily be useful.
+
+
+
+
 
 
