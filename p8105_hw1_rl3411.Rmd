@@ -16,8 +16,22 @@ data("early_january_weather")
 
 The `early_january_weather` dataset includes hourly meteorological data for EWR, Newark Liberty International Airport, for the month of January 2013.  This dataset has `r ncol(early_january_weather)` variables (thus `r ncol(early_january_weather)` columns) and `r nrow(early_january_weather)` rows of data. The variables given are `r colnames(early_january_weather)`, and the description of each variable are listed in the table below.
 
+The mean temperature is `r round(mean(early_january_weather$temp),digits=1)` $^\circ$F, and ranges from `r round(min(early_january_weather$temp),digits=1)` $^\circ$F to `r round(max(early_january_weather$temp),digits=1)`$^\circ$F, all to the nearest decimal. This dataset is mostly complete, except `wind_dir` with 5 NAs, `wind_gust` with 308 NAs, `pressure` with 38 NAs.
 
 
+| Variable name in dataset                | Description                                                |
+| --------------------------------------- | ---------------------------------------------------------- |
+| `origin`                                | Weather station                                            |
+| `year`, `month`, `day`, `hour`          | Time of recording                                          |
+| `temp`, `dewp`                          | Temperature and dewpoint in F                              |
+| `humid`                                 | Relative humidity                                          |
+| `wind_dir`, `wind_speed`, `wind_gust`   | Wind direction (in degrees), speed and gust speed (in mph) |
+| `precip`                                | Precipitation, in inches                                   |
+| `pressure`                              | Sea level pressure in millibars                            |
+| `visib`                                 | Visibility in miles                                        |
+| `time_hour`                             | Date and hour of the recording                             |
+  
+  
 
 
 
