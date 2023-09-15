@@ -90,10 +90,4 @@ as.numeric(pull(prob2, char_vec))
 as.numeric(pull(prob2, factor_vec))
 ```
 
-By applying `as.numeric` to those 3 variables, this converts `logical_vec` to a series of binary numbers 0 or 1. 1 corresponds to true and 0 corresponds to false. For the factor vector, it changes the levels into numbers 1, 2 and 3. R automatically arranges the levels alphabetically, therefore "**m**aybe" takes value 1, "**n**o" takes value 2, and "**y**es" takes value 3. Lastly, we cannot convert the character vector into numeric therefore it returns a series a NAs. We can first make this into a factor then convert it to a numeric vector by executing `as.numeric(factor(pull(prob2, char_vec)))`, but this just assigns a number to the alphabetical arrangement of the elements so taking the mean would not necessarily be useful.
-
-
-
-
-
-
+By applying `as.numeric` to those 3 variables, this converts `logical_vec` to a series of binary numbers 0 or 1. 1 corresponds to true and 0 corresponds to false. For the factor vector, it changes the levels into numbers 1, 2 and 3. R automatically arranges the levels alphabetically, therefore "**m**aybe" takes value 1, "**n**o" takes value 2, and "**y**es" takes value 3. Lastly, we cannot convert the character vector into numeric therefore it returns a series a NAs. We can first make this into a factor then convert it to a numeric vector by executing `as.numeric(factor(pull(prob2, char_vec)))`, but this just assigns a number to the alphabetical arrangement of the elements so taking the mean would not necessarily be useful. In general, we cannot make calculations on non-numeric variables, thus `as.numeric()` allows us to first convert variables into numeric then execute any necessary calculations.
