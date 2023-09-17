@@ -22,17 +22,20 @@ The `early_january_weather` dataset includes hourly meteorological data for EWR,
 The mean temperature is `r round(mean(early_january_weather$temp),digits=1)` degrees, and ranges from `r round(min(early_january_weather$temp),digits=1)` degrees to `r round(max(early_january_weather$temp),digits=1)` degrees, all to the nearest decimal. This dataset is mostly complete, except `wind_dir` with 5 NAs, `wind_gust` with 308 NAs, `pressure` with 38 NAs.
 
 
-| Variable name in dataset                | Description                                                |
-| --------------------------------------- | ---------------------------------------------------------- |
-| `origin`                                | Weather station                                            |
-| `year`, `month`, `day`, `hour`          | Time of recording                                          |
-| `temp`, `dewp`                          | Temperature and dewpoint in F                              |
-| `humid`                                 | Relative humidity                                          |
-| `wind_dir`, `wind_speed`, `wind_gust`   | Wind direction (in degrees), speed and gust speed (in mph) |
-| `precip`                                | Precipitation, in inches                                   |
-| `pressure`                              | Sea level pressure in millibars                            |
-| `visib`                                 | Visibility in miles                                        |
-| `time_hour`                             | Date and hour of the recording                             |
+| Variable name in dataset                | Description                                                | Important values                        |
+| --------------------------------------- | ---------------------------------------------------------- | --------------------------------------- |
+| `origin`                                | Weather station                                            | all 358 rows from EWR                   |
+| `year`, `month`, `day`, `hour`          | Time of recording                                          | recordings taken from 01/01/2013 - 15/01/2023 at every hour of the day |
+| `temp`, `dewp`                          | Temperature in F                                           | (as above)                              |
+| `dewp`                                  | Temperature and dewpoint in F                              | mean = `r round(mean(early_january_weather$dewp),digits=1)`, SD = `r round(sd(early_january_weather$dewp),digits=1)` |
+| `humid`                                 | Relative humidity                                          | mean = `r round(mean(early_january_weather$humid),digits=1)`, SD = `r round(sd(early_january_weather$humid),digits=1)` |
+| `wind_dir`                              | Wind direction (in degrees)                                | ranges from 0 to 360 degrees            |
+| `wind_speed`                            | Speed (in mph)                                             | mean = `r round(mean(early_january_weather$wind_speed),digits=1)`, SD = `r round(sd(early_january_weather$wind_speed),digits=1)` |
+| `wind_gust`                             | Gust speed (in mph)                                        | 308 NAs, mean = `r round(mean(early_january_weather$wind_gust,na.rm=TRUE),digits=1)`, SD = `r round(sd(early_january_weather$wind_gust,na.rm=TRUE),digits=1)`       |
+| `precip`                                | Precipitation, in inches                                   | Most commonly 0, but takes values from 0 to 0.19 |
+| `pressure`                              | Sea level pressure in millibars                            | 38 NAs, mean = `r round(mean(early_january_weather$pressure,na.rm=TRUE),digits=1)`, SD = `r round(sd(early_january_weather$pressure,na.rm=TRUE),digits=1)`         |
+| `visib`                                 | Visibility in miles                                        | mean = `r round(mean(early_january_weather$visib),digits=1)`, SD = `r round(sd(early_january_weather$visib),digits=1)` |
+| `time_hour`                             | Date and hour of the recording                             | reflection of `year`, `month`, `day`, `hour` variables |
   
 ## Scatterplot: `temp` vs `time_hour`
 
