@@ -19,7 +19,7 @@ data("early_january_weather")
 
 The `early_january_weather` dataset includes hourly meteorological data for EWR, Newark Liberty International Airport, for the month of January 2013.  This dataset has `r ncol(early_january_weather)` variables (thus `r ncol(early_january_weather)` columns) and `r nrow(early_january_weather)` rows of data. The variables given are `r colnames(early_january_weather)`, and the description of each variable are listed in the table below.
 
-The mean temperature is `r round(mean(early_january_weather$temp),digits=1)` degrees, and ranges from `r round(min(early_january_weather$temp),digits=1)` degrees to `r round(max(early_january_weather$temp),digits=1)` degrees, all to the nearest decimal. This dataset is mostly complete, except `wind_dir` with 5 NAs, `wind_gust` with 308 NAs, `pressure` with 38 NAs.
+The mean temperature is `r round(mean(early_january_weather$temp),digits=1)` degrees F, and ranges from `r round(min(early_january_weather$temp),digits=1)` degrees F to `r round(max(early_january_weather$temp),digits=1)` degrees F, all to the nearest decimal. This dataset is mostly complete, except `wind_dir` with 5 NAs, `wind_gust` with 308 NAs, `pressure` with 38 NAs.
 
 
 | Variable name in dataset                | Description                                                | Important values                        |
@@ -31,15 +31,15 @@ The mean temperature is `r round(mean(early_january_weather$temp),digits=1)` deg
 | `humid`                                 | Relative humidity                                          | mean = `r round(mean(early_january_weather$humid),digits=1)`, SD = `r round(sd(early_january_weather$humid),digits=1)` |
 | `wind_dir`                              | Wind direction (in degrees)                                | ranges from 0 to 360 degrees            |
 | `wind_speed`                            | Speed (in mph)                                             | mean = `r round(mean(early_january_weather$wind_speed),digits=1)`, SD = `r round(sd(early_january_weather$wind_speed),digits=1)` |
-| `wind_gust`                             | Gust speed (in mph)                                        | 308 NAs, mean = `r round(mean(early_january_weather$wind_gust,na.rm=TRUE),digits=1)`, SD = `r round(sd(early_january_weather$wind_gust,na.rm=TRUE),digits=1)`       |
-| `precip`                                | Precipitation, in inches                                   | Most commonly 0, but takes values from 0 to 0.19 |
-| `pressure`                              | Sea level pressure in millibars                            | 38 NAs, mean = `r round(mean(early_january_weather$pressure,na.rm=TRUE),digits=1)`, SD = `r round(sd(early_january_weather$pressure,na.rm=TRUE),digits=1)`         |
+| `wind_gust`                             | Gust speed (in mph)                                        | mean = `r round(mean(early_january_weather$wind_gust,na.rm=TRUE),digits=1)`, SD = `r round(sd(early_january_weather$wind_gust,na.rm=TRUE),digits=1)`       |
+| `precip`                                | Precipitation, in inches                                   | most commonly 0, but takes values from 0 to 0.19 |
+| `pressure`                              | Sea level pressure in millibars                            | mean = `r round(mean(early_january_weather$pressure,na.rm=TRUE),digits=1)`, SD = `r round(sd(early_january_weather$pressure,na.rm=TRUE),digits=1)`         |
 | `visib`                                 | Visibility in miles                                        | mean = `r round(mean(early_january_weather$visib),digits=1)`, SD = `r round(sd(early_january_weather$visib),digits=1)` |
 | `time_hour`                             | Date and hour of the recording                             | reflection of `year`, `month`, `day`, `hour` variables |
   
 ## Scatterplot: `temp` vs `time_hour`
 
-Looking at the plot below, we see that the temperature was fluctuating between hours, but showed a general positive trend through time, indicating that it was getting warmer. The humidity was very high between January 11 to January 14, suggesting a rainy period. After that, the temperature peaked at almost 60 degrees before taking a dip down to approximately 37 degrees.
+Looking at the plot below, we see that the temperature was fluctuating between hours, but showed a general positive trend through time, indicating that it was getting warmer. The humidity was very high between January 11 to January 14, suggesting a rainy period. After that, the temperature peaked at almost 60 degrees F before taking a dip down to approximately 37 degrees F.
 ```{r scatterplot, message = FALSE}
 weather_plot <- ggplot(early_january_weather, aes(x = time_hour, y = temp)) + 
   geom_point(aes(colour = humid))
@@ -71,7 +71,7 @@ Now, we shall try to take the mean of each variable:
 mean(pull(prob2, rand_samp))
 ```
 
-2. This also works for `logical_vec`.
+2. This also works for `logical_vec`, which tells us the proportion of variables in `rand_samp` that are positive.
 ```{r mean2}
 mean(pull(prob2, logical_vec))
 ```
